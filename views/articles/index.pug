@@ -1,0 +1,21 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Blog
+  body
+    .container
+      h1.mb-4 Blog Articles
+      a.btn.btn-success(href="/articles/new") New Article
+      each article in articles
+        .card.mt-4
+          .card-body
+            h4.card-title= article.title
+            .card-subtitle.text-muted.mb-2= article.createdAt.toLocaleDateString()
+            .card-text.mb-2= article.description
+            
+
+  
