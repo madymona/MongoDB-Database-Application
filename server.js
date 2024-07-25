@@ -1,6 +1,10 @@
 const express = require('express');
+const mongoose = require ('mongoose')
 const articleRouter = require ('./routes/articles')
 const app = express();
+
+mongoose.connect('mongodb://localhost/blog')
+app.use(express.urlencoded({ extended: true }))
 
 const PORT = process.env.PORT ||3000
 
