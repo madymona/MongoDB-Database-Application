@@ -3,14 +3,11 @@ const mongoose = require ('mongoose')
 const articleRouter = require ('./routes/articles')
 const app = express();
 
-mongoose.connect('mongodb://localhost/blog')
-app.use(express.urlencoded({ extended: true }))
-
 const PORT = process.env.PORT ||3000
-
+mongoose.connect('mongodb://localhost/blog')
 app.set('view engine', 'pug')
+app.use(express.urlencoded({ extended: false}))
 
-app.use('/articles', articleRouter)
 
 app.get("/", (req, res) => {
     const article =[{
@@ -27,6 +24,8 @@ app.get("/", (req, res) => {
     }]
     res.render('articles/index', {articles: article});
 });
+
+app.use('/articles', articleRouter)
 
 app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);

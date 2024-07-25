@@ -1,15 +1,15 @@
 .form-group
   label(for="title") Title
-  input.form-control(type="text", id="title", name="title", required)
+  input.form-control(type="text", id="title", name="title", value=article.title, required)
 
   .form-group
   label(for="description") Description
-  textarea.form-control(id="description", name="description", required)
+  textarea.form-control(id="description", name="description", required)= article.description
 
 
   .form-group
   label(for="markdown") Markdown
-  textarea.form-control(id="markdown", name="markdown", required)
+  textarea.form-control(id="markdown", name="markdown", required)= article.markdown
 
   .form-group.mt-3
   a.btn.btn-secondary.mr-2(href="/articles") Cancel
