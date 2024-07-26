@@ -1,4 +1,6 @@
 const mongoose = require ('mongoose')
+const marked = require ('marked')
+const slugify = require('slugify')
 
 const articleSchema = new mongoose.Schema({
     title:{
@@ -16,6 +18,7 @@ const articleSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
+    
 })
 
 module.exports = mongoose.model ('Article', articleSchema)

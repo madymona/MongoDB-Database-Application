@@ -16,6 +16,11 @@ html(lang="en")
             h4.card-title= article.title
             .card-subtitle.text-muted.mb-2= article.createdAt.toLocaleDateString()
             .card-text.mb-2= article.description
-            
-
+            a.btn.btn-secondary.mr-2(href="/") All Articles
+            a.btn.btn-info.mr-2(href=`/articles/edit/${article.id}`) Edit
+            a.btn.btn-primary.mr-2(href=`/articles/${article.slug}`) Read More
+            form(action=`/articles/${article.id}?_method=DELETE`, method="POST", class="d-inline")
+              button.btn.btn-danger(type="submit") Delete
+            .mt-3
+              != article.sanitizedHtml
   
