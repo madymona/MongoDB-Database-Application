@@ -21,6 +21,4 @@ html(lang="en")
             a.btn.btn-primary.mr-2(href=`/articles/${article.slug}`) Read More
             form(action=`/articles/${article.id}?_method=DELETE`, method="POST", class="d-inline")
               button.btn.btn-danger(type="submit") Delete
-            .mt-3
-              != article.sanitizedHtml
-  
+          
