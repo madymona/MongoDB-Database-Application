@@ -1,24 +1,13 @@
-const mongoose = require ('mongoose')
-const marked = require ('marked')
-const slugify = require('slugify')
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const articleSchema = new mongoose.Schema({
-    title:{
-        type: String,
-        required: true
-    }, 
-    description:{
-        type : String
-    }, 
-    markdown :{
-        type: String,
-        required: true
-    },
-    createdAt:{
-        type: Date,
-        default: Date.now
-    }
-    
-})
+const ArticleSchema = new Schema({
+    title: { type: String, required: true },
+    content: { type: String, required: true },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    publishedDate: { type: Date, default: Date.now }
+}, { timestamps: true });
 
-module.exports = mongoose.model ('Article', articleSchema)
+ArticleSchema.index({ title: 'text', content: 'text' });
+
+module.exports = mongoose.model('Article', ArticleSchema);
