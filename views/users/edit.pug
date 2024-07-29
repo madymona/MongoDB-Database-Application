@@ -1,0 +1,25 @@
+//- views/users/edit.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Edit User
+  body
+    .container
+      h1.mb-4 Edit User 
+      form(action=`/users/${user._id}?_method=PATCH` method="POST") 
+        .form-group
+          label(for="name") Name
+          input.form-control(type="text", id="name", name="name", value=user.name, required)
+        .form-group
+          label(for="email") Email
+          input.form-control(type="email", id="email", name="email", value=user.email, required)
+        .form-group
+          label(for="password") Password
+          input.form-control(type="password", id="password", name="password", value=user.password, required)
+        .form-group.mt-3
+          a.btn.btn-secondary.mr-2(href="/users") Cancel
+          button.btn.btn-primary(type="submit") Save

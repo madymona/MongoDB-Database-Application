@@ -1,0 +1,21 @@
+//- views/comments/index.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Comments
+  body
+    .container
+      h1.mb-4 Comments
+      a.btn.btn-success(href="/comments/new") New Comment
+      each comment in comments
+        .card.mt-4
+          .card-body
+            .card-text.mb-2= comment.content
+            .card-subtitle.text-muted.mb-2= comment.createdDate.toLocaleDateString()
+            a.btn.btn-info.mr-2(href=`/comments/edit/${comment._id}`) Edit
+            form(action=`/comments/${comment._id}?_method=DELETE`, method="POST", class="d-inline")
+              button.btn.btn-danger(type="submit") Delete

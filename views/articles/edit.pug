@@ -5,9 +5,9 @@ html(lang="en")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
     meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title New Article
+    title Edit Article
   body
     .container
-      h1.mb-4 New Article 
-      form(action="/articles" method="POST") 
+      h1.mb-4 Edit Article 
+      form(action=`/articles/${article._id}?_method=PATCH` method="POST") 
         include _form_fields.pug

@@ -1,0 +1,31 @@
+//- views/comments/edit.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css", integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm", crossorigin="anonymous")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Edit Comment
+  body
+    .container
+      h1.mb-4 Edit Comment 
+      form(action=`/comments/${comment._id}?_method=PATCH` method="POST") 
+        .form-group
+          label(for="content") Content
+          textarea.form-control(id="content", name="content", required)= comment.content
+        .form-group
+          label(for="author") Author
+          select.form-control(id="author", name="author", required)
+            option(value="") Select an Author
+            each user in users
+              option(value=user._id selected=(comment.author && comment.author.equals(user._id)))= user.name
+        .form-group
+          label(for="articleId") Article ID
+          select.form-control(id="articleId", name="articleId", required)
+            option(value="") Select an Article
+            each article in articles
+              option(value=article._id selected=(comment.articleId && comment.articleId.equals(article._id)))= article.title
+        .form-group.mt-3
+          a.btn.btn-secondary.mr-2(href="/comments") Cancel
+          button.btn.btn-primary(type="submit") Save

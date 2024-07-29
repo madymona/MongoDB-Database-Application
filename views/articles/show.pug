@@ -9,10 +9,8 @@ html(lang="en")
   body
     .container
       h1.mb-1= article.title
-      .text-muted.mb-2= article.createdAt.toLocaleDateString()
-      a.btn.btn-secondary(href="/") All Articles
-      a.btn.btn-info(href=`/articles/edit/${article.id}`) Edit
+      .text-muted.mb-2= article.publishedDate.toLocaleDateString()
+      a.btn.btn-secondary(href="/articles") All Articles
+      a.btn.btn-info(href=`/articles/edit/${article._id}`) Edit
 
-      .text.mt-3= article.markdown
-
-  
+      .text.mt-3= article.content
